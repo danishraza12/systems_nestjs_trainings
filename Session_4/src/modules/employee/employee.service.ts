@@ -22,8 +22,13 @@ export class EmployeeService {
     return this.employeeRepo.findOneBy({ id: employeeId });
   }
 
-  addEmployee(employee: any): any {
-    this.logger.log('Insert employee');
-    return this.employeeRepo.save(employee);
+  addEmployee(employee: any): Promise<any> {
+    try {
+      this.logger.log('Insert employee Test');
+
+      return this.employeeRepo.save(employee);
+    } catch (ex: any) {
+      console.log(ex);
+    }
   }
 }

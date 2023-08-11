@@ -51,13 +51,15 @@ export class EmployeeController {
 
   @UseFilters(ExectionFilters)
   @UseInterceptors(new ClassBasedInterceptor())
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Post()
   addEmployee(@Body() employee: any): any {
     this.logger.log(`${this.addEmployee.name} invoked`);
 
     try {
-      return this.employeeService.addEmployee(employee);
+      const emp = this.employeeService.addEmployee(employee);
+      console.log(emp);
+      return emp;
     } catch (error) {
       throw new UnauthorizedException('Something went wrong');
     }
