@@ -22,7 +22,7 @@ export class UserController {
 
   @UseFilters(ExectionFilters)
   @UseInterceptors(new ClassBasedInterceptor())
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get(':userId')
   getUserById(@Param('userId') userId: string): any {
     this.logger.log(`${this.getUserById.name} invoked`);
@@ -36,7 +36,7 @@ export class UserController {
 
   @UseFilters(ExectionFilters)
   @UseInterceptors(new ClassBasedInterceptor())
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   addUser(@Body() user: any): any {
     this.logger.log(`${this.addUser.name} invoked`);
